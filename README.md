@@ -47,6 +47,12 @@ Para levantar la base de datos con Docker necesitamos tener instalado Docker y D
 $ docker-compose up -d
 ```
 
+### Documentacion del proyecto
+
+```
+http://localhost:3000/docs/
+```
+
 ### Configurar AWS Credentials
 Instalar serverless:
 ```
