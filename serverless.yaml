@@ -1,0 +1,30 @@
+service: nest-serverless
+
+provider:
+  name: aws
+  profile: default
+  region: us-east-2
+  stage: dev
+  runtime: nodejs20.x
+
+useDotenv: true
+
+
+custom:
+  functionsFile: ${param:functionsFile, 'cloud'}
+  optimize:
+    external: ["swagger-ui-dist"]
+
+plugins:
+  - serverless-offline
+  - serverless-plugin-optimize
+  - serverless-dotenv-plugin
+  - serverless-dynamodb-local
+
+
+package:
+  exclude:
+    - src/**
+    - test/**
+
+functions: ${file(config/serverless/functions.${self:custom.functionsFile}.yaml)}
